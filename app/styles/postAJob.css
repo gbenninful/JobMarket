@@ -1,0 +1,38 @@
+body {
+  font-family: Georgia, Arial, Verdana, sans-serif;
+}
+header {
+  margin-top: 3%;
+}
+.post-duration {
+  margin-top: 3%;
+  line-height: 1.8em;
+}
+.post-duration h4 {
+  line-height: 1.8em;
+}
+.post-steps {
+  line-height: 100px;
+}
+.create-btn {
+  background: #333333 !important;
+  color: #ffcb33;
+  border-color: transparent !important;
+}
+.create-btn,
+.review-btn {
+  margin-right: 5%;
+}
+.publish-btn {
+  background: #333333;
+  border-color: transparent;
+  color: #ffcb33;
+}
+.publish-btn:hover {
+  background: #333333;
+}
+#job-posting,
+#company-info {
+  color: orangered;
+  /*color: red;*/
+}
