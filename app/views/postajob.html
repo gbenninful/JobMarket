@@ -5,7 +5,7 @@
   <header>
     <div class="row">
       <div class="col-xs-6">
-        <img src="//placehold.it/350x100/4d4d4d/ffcb33&text=Software+Engineering+Jobs" alt="Software Engineering Jobs" />
+        <img src="//placehold.it/350x100/4d4d4d/ffcb33&text=Software+Engineering+Jobs" alt="Software Engineering Jobs"/>
       </div>
       <div class="col-xs-6 post-steps">
         <button class="btn btn-primary create-btn" disabled="disabled">1. Create your Ad</button>
@@ -17,166 +17,138 @@
 
 
   <div class="post-duration">
-    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut.</h4>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id
+      sollicitudin urna fermentum ut fusce luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula
+      ut.</h4>
   </div>
 
   <div class="row">
-    <div class="col-xs-12" id="job-posting">
+    <div class="col-xs-12" id="jobPosting">
       <h3>Post Your Job</h3>
     </div>
   </div>
 
-  <form class="form-horizontal" role="form" id="job-form" ng-submit="jobPost()">
+  <form class="form-horizontal" role="form" id="jobForm" ng-submit="jobPost()" novalidate>
     <div class="form-group">
-      <label for="job-title" class="col-xs-2 control-label">Job Title</label>
+      <label for="jobTitle" class="col-xs-2 control-label">Job Title</label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="job-title" ng-model="job.title" placeholder="Job Title" xrequired>
+        <input type="text" class="form-control" id="jobTitle" ng-model="job.jobTitle" placeholder="Job Title" xrequired>
       </div>
     </div>
 
     <!-- <div class="form-group">
-        <label for="job-id" class="col-xs-2 control-label">Job ID</label>
+        <label for="jobId" class="col-xs-2 control-label">Job ID</label>
         <div class="col-xs-6">
-            <input type="text" class="form-control" id="job-id" placeholder="Job ID" required>
+            <input type="text" class="form-control" id="jobId" placeholder="Job ID" required>
         </div>
     </div>-->
-
     <div class="form-group">
-      <label for="job-category" class="col-xs-2 control-label" ng-model="job.category">Category</label>
-      <div class="col-xs-10">
+      <div><label class="col-xs-2 control-label">Category</label></div>
 
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="tester" value="QualityAssuranceEngineer">
-            Quality Assurance Engineer
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="Pm" value="ProjectManagement">
-            Project Management
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="dev" value="SoftwareDeveloperEngineer">
-            Software Developer Engineer
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="designer" value="Designer">
-            Designer
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="sdet" value="SDET">
-            SDET
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="exec" value="BusinessExec">
-            Business/Exec
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="dba" value="DatabaseAdministrator">
-            Database Administrator
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="job-category" id="other" value="Other">
-            Other
-          </label>
-        </div>
+      <div class="radio col-xs-3">
+        <label ng-repeat="category in categories">
+          <input type="radio" name="jobCategory" value="{{ category }}" ng-model="job.jobCategory"  /> {{ category }}
+        </label>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="job-description" class="col-xs-2 control-label" ng-model="job.description" >Job Description</label>
+      <label for="jobDescription" class="col-xs-2 control-label">Job Description</label>
+
       <div class="col-xs-8">
-        <textarea class="form-control" rows="8" id="job-description" xrequired></textarea>
+        <textarea class="form-control" rows="8" id="jobDescription" ng-model="job.jobDescription" xrequired></textarea>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="email-resume" class="col-xs-2 control-label">Send Resume to</label>
+      <label for="hrEmail" class="col-xs-2 control-label">Send Resume to</label>
+
       <div class="col-xs-6">
-        <input type="email" class="form-control" id="email-resume" ng-model="job.hrEmail" placeholder="Email address" xrequired>
+        <input type="email" class="form-control" id="hrEmail" ng-model="job.hrEmail" placeholder="Email address"
+               xrequired>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12" id="company-info">
+      <div class="col-xs-12" id="companyInfo">
         <h3>Company Information</h3>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="company-name" class="col-xs-2 control-label">Company Name</label>
+      <label for="companyName" class="col-xs-2 control-label">Company Name</label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="company-name" placeholder="Company Name" xrequired>
+        <input type="text" class="form-control" id="companyName" ng-model="company.name" placeholder="Company Name"
+               xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="street" class="col-xs-2 control-label">Address</label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="street" placeholder="Street" xrequired>
+        <input type="text" class="form-control" id="street" ng-model="address.street" placeholder="Street" xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="city" class="col-xs-2 control-label"></label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="city" placeholder="City" xrequired>
+        <input type="text" class="form-control" id="city" ng-model="address.city" placeholder="City" xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="state" class="col-xs-2 control-label"></label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="state" placeholder="State" xrequired>
+        <input type="text" class="form-control" id="state" ng-model="address.state" placeholder="State" xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="zip-code" class="col-xs-2 control-label"></label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="zip-code" placeholder="Zip Code" xrequired>
+        <input type="text" class="form-control" id="zip-code" ng-model="address.zip" placeholder="Zip Code" xrequired>
       </div>
     </div>
 
-    <br />
+    <br/>
+
     <div class="form-group">
       <label for="company-email" class="col-xs-2 control-label">Company Email</label>
+
       <div class="col-xs-6">
-        <input type="email" class="form-control" id="company-email" placeholder="janedoe@blah.com" xrequired>
+        <input type="email" class="form-control" id="company-email" ng-model="company.email"
+               placeholder="janedoe@blah.com" xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="phone" class="col-xs-2 control-label">Phone</label>
+
       <div class="col-xs-6">
-        <input type="tel" class="form-control" id="phone" placeholder="012-345-6789" xrequired>
+        <input type="tel" class="form-control" id="phone" ng-model="company.phone" placeholder="012-345-6789" xrequired>
       </div>
     </div>
 
     <div class="form-group">
       <label for="company-url" class="col-xs-2 control-label">URL</label>
+
       <div class="col-xs-6">
-        <input type="text" class="form-control" id="company-url" placeholder="www.blah.com" xrequired>
+        <input type="text" class="form-control" id="company-url" ng-model="company.url" placeholder="www.blah.com"
+               xrequired>
       </div>
     </div>
 
     <!--Let user Preview info before publishing-->
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary publish-btn" >Publish</button>
+        <button type="submit" class="btn btn-primary publish-btn">Publish</button>
       </div>
     </div>
   </form>

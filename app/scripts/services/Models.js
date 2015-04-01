@@ -7,10 +7,9 @@ angular.module('jobMarketApp')
     var JobPosting = function (options) {
 
        options = options || {};
-      this.companyId = options.companyId || '';
       this.jobTitle = options.jobTitle || '';
-      this.category = options.category || '';
-      this.description = options.description || '';
+      this.jobCategory = options.jobCategory || '';
+      this.jobDescription = options.jobDescription || '';
       this.hrEmail = options.hrEmail || '';
     };
 
@@ -31,7 +30,7 @@ angular.module('jobMarketApp')
 
       options = options || {};
       this.companyId = options.companyId || '';
-      this.street = options.street || '';
+      this.address.street = options.address.street || '';
       this.city = options.city || '';
       this.state = options.state || '';
       this.zipCode = options.zipCode || '';

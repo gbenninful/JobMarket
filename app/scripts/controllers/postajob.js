@@ -17,21 +17,23 @@ angular.module('jobMarketApp')
 
     init();
 
+    $scope.categories = [ 'Quality Assurance Engineer', 'SDET', 'Software Developer Engineer',  'Project Manager', 'Designer', 'Business/Exec', 'Database Administrator', 'Other' ];
+
     $scope.jobPost = function (){
 
-      JobService.postAJob($scope.job,function(data){
+      JobService.postAJob($scope.job, function(data){
 
-        Notifier.success('Your Job Posting was successful');
         console.log($scope.job);
-        console.log(data);
-
+        Notifier.success('Your Job Posting was successful');
 
       }, function(error){
         Notifier.error('Sorry, Your Job Posting failed. Please review the error and try again');
         console.log(error);
 
       } );
-
-
     };
+
+
+
+
   }]);

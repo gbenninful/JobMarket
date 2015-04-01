@@ -8,13 +8,13 @@ angular.module('jobMarketApp')
 
     function postAJob(data, success, error){
 
-      Azure.JobPosting().insert(data).done( function(positiveData){
+      Azure.JobPosting().getAzureTable().insert(data).done( function(pData){
 
         if(success){
-          success(positiveData);
+          success(pData);
         }
-        }, function (negativeData) {
-          error(negativeData);
+        }, function (nData) {
+          error(nData);
         }
       );
 
