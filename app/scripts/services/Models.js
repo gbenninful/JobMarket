@@ -20,8 +20,8 @@ angular.module('jobMarketApp')
       options = options || {};
       this.companyName = options.companyName || '';
       this.companyEmail = options.companyEmail || '';
-      this.phone = options.phone || '';
-      this.url = options.url || '';
+      this.companyPhone = options.companyPhone || '';
+      this.companyUrl = options.companyUrl || '';
     };
 
 
@@ -29,8 +29,8 @@ angular.module('jobMarketApp')
     var Address = function(options) {
 
       options = options || {};
-      this.companyId = options.companyId || '';
-      this.address.street = options.address.street || '';
+      //this.companyId = options.companyId || '';
+      this.street = options.street || '';
       this.city = options.city || '';
       this.state = options.state || '';
       this.zipCode = options.zipCode || '';

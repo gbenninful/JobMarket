@@ -3,7 +3,9 @@
 angular.module('jobMarketApp')
 .factory('Azure', ['$resource', function($resource){
 
-    var client = new WindowsAzure.MobileServiceClient('https://jobmarket.azure-mobile.net/', 'nOyNoCPJhqWihWDWZFRyvpdLHrjBtu61');
+    var APP_URL = 'https://jobmarket.azure-mobile.net/',
+        APP_KEY = 'nOyNoCPJhqWihWDWZFRyvpdLHrjBtu61',
+        client = new WindowsAzure.MobileServiceClient(APP_URL, APP_KEY);
 
         var Entity = function (tableName) {
           this.tableName = tableName;
@@ -16,7 +18,8 @@ angular.module('jobMarketApp')
 
         Entity.prototype.getResource = function(){
 
-          return $resource('https://jobmarket.azure-mobile.net/tables/' + this.tableName + '/:id', {id: '@id'}, { 'update': { method: 'PATCH', isArray: false} });
+          return $resource('https://jobmarket.azure-mobile.net/tables/' + this.tableName + '/:id', {id: '@id'}, { 'update': { method: 'PATCH', isArray: false } });
+
         };
 
         return {

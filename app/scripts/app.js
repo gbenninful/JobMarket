@@ -19,6 +19,10 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .config(['$httpProvider', function($httpProvider){
+    $httpProvider.defaults.headers.common['X-ZUMO-APPLICATION'] = 'nOyNoCPJhqWihWDWZFRyvpdLHrjBtu61'; //Adding the application key
+    $httpProvider.defaults.headers.common['Content-Type'] = 'Application/json';
+  }])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

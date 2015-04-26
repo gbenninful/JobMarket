@@ -1,6 +1,7 @@
 body {
   font-family: Georgia, Arial, Verdana, sans-serif;
 }
+
 img {
   display: block;
 }
@@ -20,7 +21,7 @@ a:hover {
 }
 
 .hero img {
-  margin-top: 3%;
+  margin-top: 1%;
 }
 
 .overlay {
@@ -46,7 +47,7 @@ a:hover {
 .intro-text h4 {
   line-height: 1.9em;
 }
-#job-name {
+#jobName {
   font-weight: bold;
   color: orangered;
   text-decoration: none;
@@ -68,9 +69,11 @@ a#job-name:hover {
   background: #333;
   color: #ffcb33;
 }
+
 .search-btn:hover {
   background: #333;
 }
+
 table#jobs {
   margin-top: 4%;
 }

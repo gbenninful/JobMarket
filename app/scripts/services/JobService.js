@@ -4,9 +4,9 @@
 'use strict';
 
 angular.module('jobMarketApp')
-  .factory('JobService', ['Azure','Models','Notifier', function(Azure, Models, Notifier){
+  .factory('JobService', ['Azure', '$q', 'Models','Notifier', function(Azure, $q, Models, Notifier){
 
-    function postAJob(data, success, error){
+    /*function postAJob(data, success, error){
 
       Azure.JobPosting().getAzureTable().insert(data).done( function(pData){
 
@@ -14,24 +14,86 @@ angular.module('jobMarketApp')
           success(pData);
         }
         }, function (nData) {
-          error(nData);
+
+          if(error){
+            error(nData);
+          }
+
         }
       );
+  }*/
 
-     /* Azure.JobPosting().resource().save(data, function(positiveData){
 
-      if(success){
-        success(positiveData);
-      }
-    }, function (negativeData) {
-      error(negativeData);
-    })
-*/
-  }
+    function postAJob(obj){
+
+      var deffered = $q.defer();
+
+      Azure.JobPosting().getAzureTable().insert(obj).then( function(results){
+
+          deffered.resolve(results);
+
+        }, function (error) {
+
+         deffered.reject(error);
+        });
+
+      return deffered.promise;
+    }
+
+
+
+    function saveCompanyInfo (obj){
+
+      var deffered = $q.defer();
+
+      Azure.CompanyInfo().getAzureTable().insert(obj).then( function(results){
+
+        deffered.resolve(results);
+
+      }, function (error) {
+
+        deffered.reject(error);
+      });
+
+      return deffered.promise;
+    }
+
+
+    function saveAddress(obj){
+
+      var deffered = $q.defer();
+
+      Azure.Address().getResource().save(obj).$promise.then( function(results){
+
+        deffered.resolve(results);
+
+      },function (error){
+
+        deffered.reject(error);
+      });
+        return deffered.promise;
+    }
+
+
+    function getAllJobs(){
+
+      var deffered = $q.defer();
+      Azure.JobPosting().getAzureTable().read().then(function(results){
+
+          deffered.resolve(results);
+        }, function(error){
+
+          deffered.reject(error);
+        });
+          return deffered.promise;
+    };
 
 
     return {
-            postAJob: postAJob
+            postAJob: postAJob,
+            saveCompanyInfo: saveCompanyInfo,
+            saveAddress: saveAddress,
+            getAllJobs: getAllJobs
     };
 
   }]);
