@@ -1,7 +1,11 @@
 <div class="container">
 
   <header>
-    <a href="#/postAJob" id="postAJob">Post a Job</a>
+    <div class="row">
+      <div class="col-xs-8"><a href="#/postAJob" id="postAJob">Post a Job</a></div>
+      <div class="col-xs-1 col-xs-offset-2"><a href="#/register" class="register">Register</a></div>
+      <div class="col-xs-1"><a href="#/signin" class="sign-in">Sign In</a></div>
+    </div>
   </header>
 
   <div class="hero">
@@ -40,13 +44,16 @@
     </div>
   </div>
 
-       <table id="jobs" class="table table-striped">
-          <tr>
-              <th>Company</th>
-              <th>Job Title</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Date</th>
+       <table ng-table="tableParams" id="jobs" class="table table-striped">
+          <tr ng-repeat="job in retrievedJobs">
+            <!--<td data-title="Job Title">{{ job.jobTitle }}</td>
+            <td data-title="Company">{{ job.companyName }}</td>
+            <td data-title="City">{{ job.city }}</td>
+            <td data-title="State">{{ job.state }}</td>
+            <td data-title="Date"></td>
+            <td data-title="">Edit</td>
+            <td data-title="">Delete</td>-->
+
           </tr>
       </table>
 

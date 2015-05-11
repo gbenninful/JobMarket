@@ -4,25 +4,7 @@
 'use strict';
 
 angular.module('jobMarketApp')
-  .factory('JobService', ['Azure', '$q', 'Models','Notifier', function(Azure, $q, Models, Notifier){
-
-    /*function postAJob(data, success, error){
-
-      Azure.JobPosting().getAzureTable().insert(data).done( function(pData){
-
-        if(success){
-          success(pData);
-        }
-        }, function (nData) {
-
-          if(error){
-            error(nData);
-          }
-
-        }
-      );
-  }*/
-
+  .factory('JobService', ['Azure', '$q', 'Models', 'Notifier', function(Azure, $q, Models, Notifier){
 
     function postAJob(obj){
 
@@ -42,7 +24,7 @@ angular.module('jobMarketApp')
 
 
 
-    function saveCompanyInfo (obj){
+    function postCompanyInfo (obj){
 
       var deffered = $q.defer();
 
@@ -59,7 +41,8 @@ angular.module('jobMarketApp')
     }
 
 
-    function saveAddress(obj){
+
+    function postAddress(obj){
 
       var deffered = $q.defer();
 
@@ -91,8 +74,8 @@ angular.module('jobMarketApp')
 
     return {
             postAJob: postAJob,
-            saveCompanyInfo: saveCompanyInfo,
-            saveAddress: saveAddress,
+            postCompanyInfo: postCompanyInfo,
+            postAddress: postAddress,
             getAllJobs: getAllJobs
     };
 

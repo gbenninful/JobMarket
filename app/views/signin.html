@@ -1,0 +1,77 @@
+<div class="container">
+
+  <header>
+    <div class="row">
+      <div class="col-xs-12"><a href="#/" id="home">Home</a></div>
+    </div>
+  </header>
+
+  <form class="form-horizontal" role="form" name="signInForm"  ng-submit="signInUser()" novalidate>
+
+    <div class="row">
+      <div class="col-xs-6 section-title"><h4>Please sign in into your Job Market account</h4></div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="email" class="col-xs-2 control-label">Email: </label>
+
+      <div class="col-xs-4">
+        <input type="text"
+               class="form-control"
+               id="email"
+               name="email"
+               ng-model="user.email"
+               ng-minlength="2"
+               ng-maxlength="30"
+               placeholder="Email"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="signInForm.lastName.$touched && signInForm.lastName.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.email.$error.required">Email is a required field, please enter a valid email. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.email.$error.minlength">Your email should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.email.$error.maxlength">Your email should have a maximum of 30 characters.</div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="password" class="col-xs-2 control-label">Password: </label>
+
+      <div class="col-xs-4">
+        <input type="password"
+               class="form-control"
+               id="password"
+               name="password"
+               ng-model="user.password"
+               ng-minlength="8"
+               ng-maxlength="40"
+               placeholder="Password"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="signInForm.password.$touched && signInForm.password.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.password.$error.required">Password is a required field, please enter a valid password. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.password.$error.minlength">Your password should have a minimum of 8 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="signInForm.password.$error.maxlength">Your password should have a maximum of 40 characters.</div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary preview-btn">Sign In</button>
+      </div>
+    </div>
+
+
+    <section>
+      <div class="row">
+        <div class="col-xs-9 col-xs-offset-3"><p>Don't have a Job market account? <a href="#/register" class="register">Register</a></p></div>
+      </div>
+    </section>
+
+  </form>
+</div>

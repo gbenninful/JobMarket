@@ -12,12 +12,11 @@ angular.module('jobMarketApp')
 
     //Binding the model object to the scope
     function init(){
+
       $scope.job = Models.JobPosting();
-      $scope.company = Models.CompanyInfo();
-      $scope.address = Models.Address();
     }
 
-   // init();
+    init();
 
 
     //Job Categories data for radio buttons
@@ -34,102 +33,49 @@ angular.module('jobMarketApp')
     ];
 
     //Previewing Job posting in Modal
-    $scope.previewJobPost = function(){
+   /* $scope.previewPostAJob = function(){
 
 
-    };
+    };*/
 
 
-      //Post Job Info, Company Info & Address Info to Azure when user clicks on Publish button
-    $scope.jobPost = function (){
+      //Post Job Info to Azure when user clicks on Publish button
+    $scope.postAJob = function (){
 
       $('#myModal').modal('hide');
 
       //Saving Job Information
-      JobService.postAJob($scope.job).then( function(data){
+      JobService.postAJob($scope.job).then( function(job){
 
         Notifier.success('Your Job Posting was successful');
-        console.log(data);
+        console.log(job);
+
+      //Getting posted Jobs
+        JobService.getAllJobs().then(function(retrievedJobs){
+
+          Notifier.success('You succeeded in getting all the posted jobs');
+          console.log(retrievedJobs.length);
+          console.table(retrievedJobs);
+          $scope.retrievedJobs = retrievedJobs;
+
+        }, function(error){
+            Notifier.error('Your get all posted jobs operation failed');
+            console.log(error);
+
+        });
 
       }, function(error){
 
         Notifier.error('Sorry, Your Job Posting failed. Please review the error and try again');
         console.log(error);
 
-      } );
+      });
 
 
-      //Saving Company Information
-      JobService.saveCompanyInfo($scope.company).then( function(data){
-
-          Notifier.success('You successfully saved your Company Info');
-          console.log(data);
-        },
-        function(error){
-          Notifier.error('Sorry, you could not successfully save your Company Info. Please try again');
-          console.log(error);
-        }
-      );
-
-      //Saving Address Information
-      JobService.saveAddress($scope.address).then( function(data){
-
-          console.log("About to Get All Jobs.");
-
-          Notifier.success('You successfully saved the Company Address');
-          console.log(data);
-
-          //Calling the getAllJobs factory in JobServices
-          JobService.getAllJobs().then(function(postedJobs){
-           $scope.postedJobs = postedJobs;
-
-            Notifier.success("Yay, I'm able to read all the posted jobs");
-            console.table(postedJobs);
-          }, function(error){
-
-            console.log(error);
-            console.log("Sorry we had an error retrieving your data");
-
-          });
-
-
-          //Calling the getAllJobs factory in JobServices
-          /*JobService.getAllJobs(function(postedJobs){
-           $scope.postedJobs = postedJobs;
-           $scope.$apply();
-
-           Notifier.success("Yay, I'm able to read all the posted jobs");
-           console.log(postedJobs);
-           }, function(error){
-
-           console.log(error);
-           console.log("Sorry we had an error retrieving your data");
-
-           });*/
-        },
-        function(error){
-          Notifier.error('Sorry, you could not successfully save the Company Address. Please try again');
-          console.log(error);
-
-        });
-
-
-   /*   JobService.getAllJobs(function(postedJobs){
-
-          console.log(postedJobs)
-      }, function(error){
-
-        console.log(error);
-        console.lopg("Sorry we had an error retrieving your data");
-
-      })*/;
-
-      $scope.job = '';
-      $scope.company = '';
-      $scope.address = '';
-
-      $scope.jobForm.$setPristine();
-
-     // $location.path('/');
+     /* $scope.job = {};
+      $scope.jobPostingForm.$setPristine();
+      $scope.jobPostingForm.$setUntouched();
+*/
+      $location.path('/');
     };
   }]);

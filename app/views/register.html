@@ -1,0 +1,152 @@
+<div class="container">
+
+  <header>
+    <div class="row">
+      <div class="col-xs-12"><a href="#/" id="home">Home</a></div>
+    </div>
+  </header>
+
+  <form class="form-horizontal" role="form" name="registerUserForm"  ng-submit="registerUser()" novalidate>
+
+    <div class="row">
+      <div class="col-xs-6 section-title"><h4>Please sign up for a Job Market account</h4></div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="firstName" class="col-xs-2 control-label">First Name: </label>
+
+      <div class="col-xs-4">
+        <input type="text"
+               class="form-control"
+               id="firstName"
+               name="firstName"
+               ng-model="user.firstName"
+               ng-minlength="2"
+               ng-maxlength="40"
+               placeholder="First Name"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="registerUserForm.firstName.$touched && registerUserForm.firstName.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.firstName.$error.required">First Name is a required field, please enter a valid first name. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.firstName.$error.minlength">Your first name should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.firstName.$error.maxlength">Your first name should have a maximum of 40 characters.</div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="lastName" class="col-xs-2 control-label">Last Name: </label>
+
+      <div class="col-xs-4">
+        <input type="text"
+               class="form-control"
+               id="lastName"
+               name="lastName"
+               ng-model="user.lastName"
+               ng-minlength="2"
+               ng-maxlength="40"
+               placeholder="Last Name"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="registerUserForm.lastName.$touched && registerUserForm.lastName.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.lastName.$error.required">Last Name is a required field, please enter a valid last name. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.lastName.$error.minlength">Your last name should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.lastName.$error.maxlength">Your last name should have a maximum of 40 characters.</div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+      <label for="email" class="col-xs-2 control-label">Email: </label>
+
+      <div class="col-xs-4">
+        <input type="text"
+               class="form-control"
+               id="email"
+               name="email"
+               ng-model="user.email"
+               ng-minlength="2"
+               ng-maxlength="30"
+               placeholder="Email"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="registerUserForm.lastName.$touched && registerUserForm.lastName.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.email.$error.required">Email is a required field, please enter a valid email. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.email.$error.minlength">Your email should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.email.$error.maxlength">Your email should have a maximum of 30 characters.</div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="password" class="col-xs-2 control-label">Password: </label>
+
+      <div class="col-xs-4">
+        <input type="password"
+               class="form-control"
+               id="password"
+               name="password"
+               ng-model="user.password"
+               ng-minlength="8"
+               ng-maxlength="40"
+               placeholder="Password"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="registerUserForm.password.$touched && registerUserForm.password.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.password.$error.required">Password is a required field, please enter a valid password. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.password.$error.minlength">Your password should have a minimum of 8 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.password.$error.maxlength">Your password should have a maximum of 40 characters.</div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="passwordConfirmation" class="col-xs-2 control-label">Confirm Password: </label>
+
+      <div class="col-xs-4">
+        <input type="password"
+               class="form-control"
+               id="passwordConfirmation"
+               name="passwordConfirmation"
+               ng-model="user.passwordConfirmation"
+               ng-minlength="8"
+               ng-maxlength="40"
+               placeholder="Password"
+               ng-required="true" />
+      </div>
+    </div>
+
+    <div class="error form-group" ng-show="registerUserForm.passwordConfirmation.$touched && registerUserForm.passwordConfirmation.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.passwordConfirmation.$error.required">Password is a required field, please enter a valid password. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.passwordConfirmation.$error.minlength">Your password should have a minimum of 8 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="registerUserForm.passwordConfirmation.$error.maxlength">Your password should have a maximum of 40 characters.</div>
+    </div>
+
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary preview-btn">Register</button>
+      </div>
+    </div>
+
+
+    <section>
+      <div class="row">
+        <div class="col-xs-9 col-xs-offset-3"><p>Already have a Job market account? <a href="#/signin" class="sign-in">Sign in</a></p></div>
+      </div>
+    </section>
+
+  </form>
+</div>
+

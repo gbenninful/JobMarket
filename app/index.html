@@ -10,12 +10,19 @@
 
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/postAJob.css">
+
+
+    <link data-require="ng-table@*" data-semver="0.3.0" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.css" />
+    <!--<link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
+
+    <!--<link rel="stylesheet" href="style.css" />-->
 
     <!-- endbuild -->
   </head>
@@ -90,6 +97,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -102,6 +110,10 @@
         <script src="scripts/services/JobService.js"></script>
         <script src="scripts/services/Models.js"></script>
         <script src="scripts/services/Notifier.js"></script>
+        <script src="scripts/controllers/signin.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/services/UserService.js"></script>
+        <script src="scripts/controllers/companyinfo.js"></script>
         <!-- endbuild -->
 </body>
 </html>

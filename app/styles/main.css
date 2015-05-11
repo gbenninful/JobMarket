@@ -78,5 +78,8 @@ table#jobs {
   margin-top: 4%;
 }
 
-
+.ng-table {
+  /*border: purple solid 1px;*/
+  /*outline: red solid 1px;*/
+}
 

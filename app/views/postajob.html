@@ -27,7 +27,7 @@
 
 
   <!--Job Post Form-->
-  <form class="form-horizontal" role="form" name="jobForm"  ng-submit="jobPost()" novalidate>
+  <form class="form-horizontal" role="form" name="jobPostingForm"  ng-submit="postAJob()" novalidate>
 
     <div class="row">
       <div class="col-xs-12 section-title"><h3>Post Your Job</h3></div>
@@ -47,14 +47,14 @@
                ng-minlength="2"
                ng-maxlength="40"
                placeholder="Job Title"
-               ng-required />
+               ng-required="true" />
       </div>
     </div>
 
-        <div class="error form-group" ng-show="jobForm.jobTitle.$touched && jobForm.jobTitle.$invalid">
-          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobTitle.$error.required">Job title is a required field, please enter a valid job title. </div>
-          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobTitle.$error.minlength">Your job title should have a minimum of 2 characters. </div>
-          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobTitle.$error.maxlength">Your job title should have a maximum of 40 characters.</div>
+        <div class="error form-group" ng-show="jobPostingForm.jobTitle.$touched && jobPostingForm.jobTitle.$invalid">
+          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobTitle.$error.required">Job title is a required field, please enter a valid job title. </div>
+          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobTitle.$error.minlength">Your job title should have a minimum of 2 characters. </div>
+          <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobTitle.$error.maxlength">Your job title should have a maximum of 40 characters.</div>
         </div>
 
 
@@ -71,14 +71,14 @@
                  name="jobCategory"
                  value="{{ category.txt }}"
                  ng-model="job.jobCategory"
-                 ng-required />
+                 ng-required="true" />
             <div ng-repeat-end="">{{ category.txt }}</div>
           </label>
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.jobCategory.$untouched && jobForm.$submitted">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobCategory.$error.required">Job category is a required field, please enter a job category. </div>
+    <div class="error form-group" ng-show="jobPostingForm.jobCategory.$untouched && jobForm.$submitted">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobCategory.$error.required">Job category is a required field, please enter a job category. </div>
     </div>
 
 
@@ -95,15 +95,15 @@
                   ng-model="job.jobDescription"
                   ng-minlength="2"
                   ng-maxlength="400"
-                  ng-required>
+                  ng-required="true">
         </textarea>
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.jobDescription.$touched && jobForm.jobDescription.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobDescription.$error.required">Job description is a required field, please enter a valid job description. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobDescription.$error.minlength">Your job description should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.jobDescription.$error.maxlength">Your job description should have a maximum of 400 characters.</div>
+    <div class="error form-group" ng-show="jobPostingForm.jobDescription.$touched && jobForm.jobDescription.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobDescription.$error.required">Job description is a required field, please enter a valid job description. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobDescription.$error.minlength">Your job description should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.jobDescription.$error.maxlength">Your job description should have a maximum of 400 characters.</div>
     </div>
 
 
@@ -121,22 +121,16 @@
                placeholder="Email address"
                ng-minlength="2"
                ng-maxlength="30"
-               ng-required>
+               ng-required ="true" />
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.hrEmail.$touched && jobForm.hrEmail.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.hrEmail.$error.required">HR Email address is a required field, please enter a valid email. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.hrEmail.$error.minlength">HR Email address should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.hrEmail.$error.maxlength">HR Email address should have a maximum of 30 characters.</div>
+    <div class="error form-group" ng-show="jobPostingForm.hrEmail.$touched && jobPostingForm.hrEmail.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.hrEmail.$error.required">Email address is a required field, please enter a valid email. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.hrEmail.$error.minlength">Email address should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.hrEmail.$error.maxlength">Email address should have a maximum of 30 characters.</div>
     </div>
 
-
-
-<!--Company Information-->
-    <div class="row">
-      <div class="col-xs-12 section-title"><h3>Company Information</h3></div>
-    </div>
 
 
     <!-- Company Name -->
@@ -148,197 +142,71 @@
                class="form-control"
                id="companyName"
                name="companyName"
-               ng-model="company.companyName"
+               ng-model="job.companyName"
                ng-minlength="2"
                ng-maxlength="30"
                placeholder="Company Name"
-               ng-required />
+               ng-required="true" />
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.companyName.$touched && jobForm.companyName.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyName.$error.required">Company name is a required field, please enter your company name. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyName.$error.minlength">Your company name should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyName.$error.maxlength">Your company name should have a maximum of 50 characters.</div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyName.$error.pattern">Your company name should consist of alpha-numeric characters. </div>
-    </div>
-
-
-
-    <!-- Address -->
-    <div class="form-group">
-      <label for="street" class="col-xs-2 control-label">Address</label>
-
-      <!-- Street -->
-      <div class="col-xs-6">
-        <input type="text"
-               class="form-control"
-               id="street"
-               name="street"
-               ng-model="address.street"
-               ng-minlength="2"
-               ng-maxlength="50"
-               placeholder="Street"
-               ng-required/>
-      </div>
-    </div>
-
-    <div class="error form-group" ng-show="jobForm.street.$touched && jobForm.street.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.street.$error.required">Street address is a required field, please enter your street address. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.street.$error.minlength">Your street address should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.street.$error.maxlength">Your street address should have a maximum of 50 characters.</div>
+    <div class="error form-group" ng-show="jobPostingForm.companyName.$touched && jobPostingForm.companyName.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.companyName.$error.required">Company name is a required field, please enter your company name. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.companyName.$error.minlength">Your company name should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.companyName.$error.maxlength">Your company name should have a maximum of 50 characters.</div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.companyName.$error.pattern">Your company name should consist of alpha-numeric characters. </div>
     </div>
 
 
 
     <!-- City -->
     <div class="form-group">
-      <label for="city" class="col-xs-2 control-label"></label>
+      <label for="city" class="col-xs-2 control-label">City</label>
 
       <div class="col-xs-6">
         <input type="text"
                class="form-control"
                id="city"
                name="city"
-               ng-model="address.city"
+               ng-model="job.city"
                ng-minlength="2"
                ng-maxlength="30"
                placeholder="City"
-               ng-required>
+               ng-required="true" />
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.city.$touched && jobForm.city.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.city.$error.required">City is a required field, please enter your the name of your city. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.city.$error.minlength">Your city name should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.city.$error.maxlength">Your city name should have a maximum of 30 characters.</div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.city.$error.pattern">Your city name should consist of alpha-numeric characters. </div>
+    <div class="error form-group" ng-show="jobPostingForm.city.$touched && jobPostingForm.city.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.city.$error.required">City is a required field, please enter your the name of your city. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.city.$error.minlength">Your city name should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.city.$error.maxlength">Your city name should have a maximum of 30 characters.</div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.city.$error.pattern">Your city name should consist of alpha-numeric characters. </div>
     </div>
 
 
 
     <!-- State -->
     <div class="form-group">
-      <label for="state" class="col-xs-2 control-label"></label>
+      <label for="state" class="col-xs-2 control-label">State</label>
 
       <div class="col-xs-6">
         <input type="text"
                class="form-control"
                id="state"
                name="state"
-               ng-model="address.state"
+               ng-model="job.state"
                ng-minlength="2"
                ng-maxlength="20"
                placeholder="State"
-               ng-required>
+               ng-required="true" >
       </div>
     </div>
 
-    <div class="error form-group" ng-show="jobForm.state.$touched && jobForm.state.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.state.$error.required">State is a required field, please enter your the name of your state. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.state.$error.minlength">Your state name should have a minimum of 2 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.state.$error.maxlength">Your state name should have a maximum of 30 characters.</div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.state.$error.pattern">Your state name should consist of alpha-numeric characters. </div>
-    </div>
-
-
-
-<!--Zip Code-->
-    <div class="form-group">
-      <label for="zip-code" class="col-xs-2 control-label"></label>
-
-      <div class="col-xs-6">
-        <input type="number"
-               class="form-control"
-               id="zipCode"
-               name="zipCode"
-               ng-model="address.zipCode"
-               ng-minlength="5"
-               ng-maxlength="10"
-               placeholder="Zip Code"
-               ng-required>
-      </div>
-    </div>
-
-    <div class="error form-group" ng-show="jobForm.zipCode.$touched && jobForm.zipCode.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.zipCode.$error.required">Zip code is a required field, please enter your zip code. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.zipCode.$error.minlength">Your zip code should have a minimum of 5 digits. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.zipCode.$error.maxlength">Your zip code should have a maximum of 10 digits.</div>
-    </div>
-
-
-
-<!--Company Email-->
-    <div class="form-group">
-      <label for="company-email" class="col-xs-2 control-label">Company Email</label>
-
-      <div class="col-xs-6">
-        <input type="email"
-               class="form-control"
-               id="companyEmail"
-               name="companyEmail"
-               ng-model="company.companyEmail"
-               ng-minlength="8"
-               ng-maxlength="30"
-               placeholder="janedoe@blah.com"
-               ng-required>
-      </div>
-    </div>
-
-    <div class="error form-group" ng-show="jobForm.companyEmail.$touched && jobForm.companyEmail.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyEmail.$error.required">Company Email is a required field, please enter a valid email. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyEmail.$error.minlength">Your company's email should have a minimum of 8 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyEmail.$error.maxlength">Your company's email should have a maximum of 30 characters.</div>
-    </div>
-
-
-
-    <!-- Phone-->
-    <div class="form-group">
-      <label for="phone" class="col-xs-2 control-label">Phone</label>
-
-      <div class="col-xs-6">
-        <input type="tel"
-               class="form-control"
-               id="companyPhone"
-               name="companyPhone"
-               ng-model="company.companyPhone"
-               ng-minlength="10"
-               ng-maxlength="12"
-               placeholder="012-345-6789"
-               ng-required>
-      </div>
-    </div>
-
-    <div class="error form-group" ng-show="jobForm.companyPhone.$touched && jobForm.companyPhone.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyPhone.$error.required">Company phone number is a required field, please enter a valid phone number.</div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyPhone.$error.minlength">Your company's phone number should have a minimum of 10 digits. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyPhone.$error.maxlength">Your company's phone number should have a maximum of 12 digits.</div>
-    </div>
-
-
-
-    <!-- Company url-->
-    <div class="form-group">
-      <label for="company-url" class="col-xs-2 control-label">URL</label>
-
-      <div class="col-xs-6">
-        <input type="text"
-               class="form-control"
-               id="companyUrl"
-               name="companyUrl"
-               ng-model="company.companyUrl"
-               ng-minlength="9"
-               ng-maxlength="30"
-               placeholder="www.mycompany.com"
-               ng-required />
-      </div>
-    </div>
-
-    <div class="error form-group" ng-show="jobForm.companyUrl.$touched && jobForm.companyUrl.$invalid">
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyUrl.$error.required">Company url is a required field, please enter a valid url.</div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyUrl.$error.minlength">Your company's url should have a minimum of 9 characters. </div>
-      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobForm.companyUrl.$error.maxlength">Your company's url number should have a maximum of 30 characters.</div>
+    <div class="error form-group" ng-show="jobPostingForm.state.$touched && jobPostingForm.state.$invalid">
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.state.$error.required">State is a required field, please enter your the name of your state. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.state.$error.minlength">Your state name should have a minimum of 2 characters. </div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.state.$error.maxlength">Your state name should have a maximum of 30 characters.</div>
+      <div class="error col-xs-6 col-xs-offset-2" ng-show="jobPostingForm.state.$error.pattern">Your state name should consist of alpha-numeric characters. </div>
     </div>
 
 
@@ -350,7 +218,6 @@
         <button type="button" class="btn btn-primary preview-btn" ng-click="previewJobPost()" data-toggle="modal" data-target="#myModal">Preview</button>
       </div>
     </div>
-
 
 
 
@@ -391,49 +258,19 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-12 section-title"><h4>Company Information</h4></div>
-            </div>
-
-            <div class="row">
               <div class="col-xs-3 col-xs-offset-1 bold"><p>Company Name: </p></div>
-              <div class="col-xs-8">{{ company.companyName }}</div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-3 col-xs-offset-1 bold"><p>Address: </p></div>
-              <div class="col-xs-8">{{ address.street }}</div>
+              <div class="col-xs-8">{{ job.companyName }}</div>
             </div>
 
             <div class="row">
               <div class="col-xs-3 col-xs-offset-1 bold"><p>City</p></div>
-              <div class="col-xs-8">{{ address.city }}</div>
+              <div class="col-xs-8">{{ job.city }}</div>
             </div>
 
             <div class="row">
               <div class="col-xs-3 col-xs-offset-1 bold"><p>State</p></div>
-              <div class="col-xs-8">{{ address.state }}</div>
+              <div class="col-xs-8">{{ job.state }}</div>
             </div>
-
-            <div class="row">
-              <div class="col-xs-3 col-xs-offset-1 bold"><p>Zip Code</p></div>
-              <div class="col-xs-8">{{ address.zipCode }}</div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-3 col-xs-offset-1 bold"><p>Company Email: </p></div>
-              <div class="col-xs-8">{{ company.companyEmail }}</div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-3 col-xs-offset-1 bold"><p>Phone: </p></div>
-              <div class="col-xs-8">{{ company.companyPhone }}</div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-3 col-xs-offset-1 bold"><p>URL:</p></div>
-              <div class="col-xs-8">{{ company.companyUrl }}</div>
-            </div>
-          </div>
 
 
           <!-- Submit Form button-->

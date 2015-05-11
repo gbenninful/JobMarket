@@ -23,8 +23,9 @@ angular.module('jobMarketApp')
         };
 
         return {
-                JobPosting: function (){ return new Entity('JobPostings'); },
-                CompanyInfo: function () { return new Entity('CompanyInfo'); },
-                Address: function () { return new Entity('Address'); }
+                JobPosting: function(){ return new Entity('JobPostings'); },
+                CompanyInfo: function() { return new Entity('CompanyInfo'); },
+                Address: function(){ return new Entity('Address'); },
+                User: function(){ return new Entity('Users');}
         };
       }]);
